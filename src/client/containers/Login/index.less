@@ -1,0 +1,43 @@
+.login-page {
+  padding: 112px 0 24px;
+  min-height: 100%;
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    // z-index: 1;
+  }
+  .login-form {
+    .header {
+      margin: 0 0 24px 0;
+    }
+    width: 368px;
+    margin: 0 auto;
+    text-align: center;
+    .ant-input {
+      min-height: 0;
+    }
+    .ant-btn-primary {
+      background-color: #097e5a;
+      border-color: #097e5a;
+      &:hover {
+        background-color: #097e5ba4;
+      }
+    }
+    .ant-input:hover,
+    .ant-input:focus,
+    .ant-input:active,
+    .ant-input:focus-within {
+      border-color: #097e5a;
+    }
+    .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
+      border-color: #097e5a;
+      border-right-width: 1px !important;
+    }
+  }
+  .ant-card {
+    background: #ffffff3d;
+  }
+}
