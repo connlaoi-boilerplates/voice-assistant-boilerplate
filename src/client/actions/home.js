@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-import * as ActionTypes from '../constants/actionTypes';
+import * as ActionTypes from '../constants/actionTypes'
 
 // Fetch Data Example
 // export const fetchItemsData = () => ({

@@ -1,16 +1,16 @@
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
-import React from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import React from 'react'
 
-import AdminDashboard from '../AdminDashboard';
-import ArtyomRosie from '../Artyom';
-import Home from '../Home';
-import Login from '../Login';
-import NotFound from '../NotFound';
-import PrivateRoute from '../../components/PrivateRoute';
-import UserForm from '../UserForm';
-import UserList from '../UserList';
+import AdminDashboard from '../AdminDashboard'
+import ArtyomRosie from '../Artyom'
+import Home from '../Home'
+import Login from '../Login'
+import NotFound from '../NotFound'
+import PrivateRoute from '../../components/PrivateRoute'
+import UserForm from '../UserForm'
+import UserList from '../UserList'
 
-import './index.less';
+import './index.less'
 
 export default class App extends React.Component {
   render() {
@@ -38,6 +38,6 @@ export default class App extends React.Component {
           </Switch>
         </ArtyomRosie>
       </BrowserRouter>
-    );
+    )
   }
 }

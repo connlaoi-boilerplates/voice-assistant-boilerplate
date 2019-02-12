@@ -1,22 +1,30 @@
-const {resolve} = require('path');
-const merge = require('webpack-merge');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { resolve } = require('path')
+const merge = require('webpack-merge')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const commonConfig = require('./webpack.config.common');
+const commonConfig = require('./webpack.config.common')
 
 module.exports = merge(commonConfig, {
   mode: 'production',
   plugins: [
     new UglifyJsPlugin({
       parallel: true,
-      extractComments: true
+      extractComments: true,
+      uglifyOptions: {
+        compress: {
+          drop_console: true
+        },
+        output: {
+          comments: false
+        }
+      }
     }),
     new HtmlWebpackPlugin({
       hash: true,
       inject: true,
       template: resolve(__dirname, '..', 'src', 'client', 'index.html'),
-      favicon: resolve(__dirname, '..', 'src', 'client', 'assets', 'ai-hub-logo.png'),
+      // favicon: resolve(__dirname, '..', 'src', 'client', 'favicon.ico'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -31,4 +39,4 @@ module.exports = merge(commonConfig, {
       }
     })
   ]
-});
+})

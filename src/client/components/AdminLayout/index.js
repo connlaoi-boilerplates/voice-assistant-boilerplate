@@ -1,46 +1,46 @@
-import {connect} from 'react-redux';
-import {Layout, Menu, Icon} from 'antd';
-import {withRouter} from 'react-router-dom';
-import React from 'react';
+import { connect } from 'react-redux'
+import { Layout, Menu, Icon } from 'antd'
+import { withRouter } from 'react-router-dom'
+import React from 'react'
 
-import {openChangeMenu} from '../../actions/admin';
-import AppFooter from '../../components/AppFooter';
-import Header from './Header';
+import { openChangeMenu } from '../../actions/admin'
+import AppFooter from '../../components/AppFooter'
+import Header from './Header'
 
-import './index.less';
-import appIcon from '../../assets/aihub-logo-slim.png';
+import './index.less'
+import appIcon from '../../assets/aihub-logo-slim.png'
 
-require('babel-core/register');
-require('babel-polyfill');
+require('babel-core/register')
+require('babel-polyfill')
 
-const {Sider, Content} = Layout;
-const {SubMenu} = Menu;
+const { Sider, Content } = Layout
+const { SubMenu } = Menu
 
 class Admin extends React.Component {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
 
-    this.handleHeaderOnToggle = this.handleHeaderOnToggle.bind(this);
-    this.handleMenuItemOnClick = this.handleMenuItemOnClick.bind(this);
+    this.handleHeaderOnToggle = this.handleHeaderOnToggle.bind(this)
+    this.handleMenuItemOnClick = this.handleMenuItemOnClick.bind(this)
 
     this.state = {
       collapsed: false
-    };
+    }
   }
 
   handleHeaderOnToggle() {
     this.setState({
       collapsed: !this.state.collapsed
-    });
+    })
   }
 
   handleMenuItemOnClick(item) {
-    this.props.history.push(`/admin/${item.key}`);
+    this.props.history.push(`/admin/${item.key}`)
   }
 
   render() {
-    const {match, children, openKeys} = this.props;
-    const selectedKey = match.path.split('/').splice(-1)[0];
+    const { match, children, openKeys } = this.props
+    const selectedKey = match.path.split('/').splice(-1)[0]
 
     return (
       <Layout className="admin-page">
@@ -74,17 +74,17 @@ class Admin extends React.Component {
           <AppFooter />
         </Layout>
       </Layout>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
-  const {openKeys} = state.admin || ['general'];
-  return {openKeys};
-};
+  const { openKeys } = state.admin || ['general']
+  return { openKeys }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   handleMenuOnOpenChange: (openKeys) => dispatch(openChangeMenu(openKeys))
-});
+})
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Admin));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Admin))

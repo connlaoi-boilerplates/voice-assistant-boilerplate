@@ -2,11 +2,11 @@ git:
   depth: 3
 branches:
   except:
-  - docs
+    - docs
 language: node_js
 node_js:
-  - "node"
-  - "8.9"
+  - 'node'
+  - '8.11.1'
 script:
   - npm run lint
   - npm run build

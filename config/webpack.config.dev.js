@@ -1,10 +1,10 @@
-const {resolve} = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const { resolve } = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 
-const commonConfig = require('./webpack.config.common');
+const commonConfig = require('./webpack.config.common')
 
 module.exports = merge(commonConfig, {
   mode: 'development',
@@ -27,4 +27,4 @@ module.exports = merge(commonConfig, {
       outputPath: resolve(__dirname, '..', 'build-dev', 'client')
     })
   ]
-});
+})

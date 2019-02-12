@@ -1,4 +1,4 @@
-import {APP_LOGIN_SET, APP_LOGOUT_SET} from '../constants/actionTypes';
+import { APP_LOGIN_SET, APP_LOGOUT_SET } from '../constants/actionTypes'
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -6,13 +6,13 @@ export default (state = {}, action) => {
       return {
         ...state,
         accessToken: action.accessToken
-      };
+      }
     case APP_LOGOUT_SET:
       return {
         ...state,
         accessToken: null
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

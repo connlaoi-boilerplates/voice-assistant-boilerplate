@@ -1,11 +1,10 @@
-const {resolve, join} = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { resolve, join } = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const IS_DEV = process.env.NODE_ENV !== 'production';
+const IS_DEV = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-
   target: 'web',
   entry: ['babel-polyfill', './src/client/index.js'],
   output: {
@@ -35,7 +34,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: {
             loader: 'style-loader',
-            options: {sourceMap: IS_DEV}
+            options: { sourceMap: IS_DEV }
           },
           use: [
             {
@@ -48,11 +47,11 @@ module.exports = {
             },
             {
               loader: 'sass-loader',
-              options: {sourceMap: IS_DEV}
+              options: { sourceMap: IS_DEV }
             },
             {
               loader: 'postcss-loader',
-              options: {sourceMap: IS_DEV}
+              options: { sourceMap: IS_DEV }
             }
           ]
         })
@@ -105,4 +104,4 @@ module.exports = {
   devServer: {
     https: true
   }
-};
+}

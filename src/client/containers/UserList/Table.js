@@ -1,27 +1,27 @@
-import React from 'react';
-import {Table, Modal} from 'antd';
-import {TableRowEditButton} from '../../components/AppButton';
+import React from 'react'
+import { Table, Modal } from 'antd'
+import { TableRowEditButton } from '../../components/AppButton'
 
 class ItemListTable extends React.Component {
   constructor(props, context) {
-    super(props, context);
-    this.handleDeleteButtonOnClick = this.handleDeleteButtonOnClick.bind(this);
+    super(props, context)
+    this.handleDeleteButtonOnClick = this.handleDeleteButtonOnClick.bind(this)
   }
 
   handleDeleteButtonOnClick() {
     const handleTableOnDelete = () => {
-      this.props.onDelete();
-    };
+      this.props.onDelete()
+    }
     Modal.confirm({
       title: 'Delete Item',
       content: 'Are you sure to delete this item?',
       onOk() {
-        handleTableOnDelete();
+        handleTableOnDelete()
       },
       onCancel() {
         // console.log('Cancel')
       }
-    });
+    })
   }
 
   render() {
@@ -59,9 +59,9 @@ class ItemListTable extends React.Component {
           </span>
         )
       }
-    ];
-    return <Table rowKey={(record) => `item-row-${record.id}`} columns={columns} {...this.props} />;
+    ]
+    return <Table rowKey={(record) => `item-row-${record.id}`} columns={columns} {...this.props} />
   }
 }
 
-export default ItemListTable;
+export default ItemListTable

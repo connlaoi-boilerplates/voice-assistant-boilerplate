@@ -12,7 +12,7 @@ class SectionHeaderTemplate extends React.Component {
   render() {
     const { breadcrumbRoutes, title } = this.props
     return (
-      <div className='section-header-template'>
+      <div className="section-header-template">
         {breadcrumbRoutes && <Breadcrumb itemRender={itemRender} routes={breadcrumbRoutes} />}
         {title && <h1>{title}</h1>}
       </div>

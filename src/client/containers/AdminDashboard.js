@@ -1,7 +1,7 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import AdminLayout from '../components/AdminLayout';
-import SectionContent from '../components/SectionContent';
+import React from 'react'
+import { connect } from 'react-redux'
+import AdminLayout from '../components/AdminLayout'
+import SectionContent from '../components/SectionContent'
 
 class AdminDashboard extends React.Component {
   render() {
@@ -12,8 +12,8 @@ class AdminDashboard extends React.Component {
           <p>Coming Soon</p>
         </SectionContent>
       </AdminLayout>
-    );
+    )
   }
 }
 
-export default connect()(AdminDashboard);
+export default connect()(AdminDashboard)

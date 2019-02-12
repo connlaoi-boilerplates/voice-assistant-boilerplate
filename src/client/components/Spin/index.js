@@ -1,6 +1,6 @@
-import React from 'react';
-import {Spin} from 'antd';
-import './index.less';
+import React from 'react'
+import { Spin } from 'antd'
+import './index.less'
 
 class AppSpin extends React.Component {
   render() {
@@ -8,8 +8,8 @@ class AppSpin extends React.Component {
       <div className="app-spin">
         <Spin />
       </div>
-    );
+    )
   }
 }
 
-export default AppSpin;
+export default AppSpin

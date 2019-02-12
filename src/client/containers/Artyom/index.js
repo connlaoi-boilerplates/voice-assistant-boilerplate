@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
-import Artyom from '../../resources/artyom';
-import React, {Component} from 'react';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+import Artyom from '../../resources/artyom'
+import React, { Component } from 'react'
 
 import {
   startAssistant,
@@ -12,68 +12,68 @@ import {
   fetchAssistantData,
   fetchAssistantVoice,
   onVoiceToggle
-} from '../../actions/artyom';
-import RosieCommandsManager from './voiceCommands.js';
-import './index.less';
+} from '../../actions/artyom'
+import RosieCommandsManager from './voiceCommands.js'
+import './index.less'
 
-import {Button, message, Icon, Switch} from 'antd';
-import soundError from '../../assets/error.mp3';
-import soundStart from '../../assets/start_of_input.mp3';
-import soundStop from '../../assets/end_of_input.mp3';
+import { Button, message, Icon, Switch } from 'antd'
+import soundError from '../../assets/error.mp3'
+import soundStart from '../../assets/start_of_input.mp3'
+import soundStop from '../../assets/end_of_input.mp3'
 
 // create artyom instance
-const artyom = new Artyom();
+const artyom = new Artyom()
 
 class ArtyomRosie extends Component {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
 
-    let CommandsManager = new RosieCommandsManager(artyom);
-    CommandsManager.loadCommands();
+    let CommandsManager = new RosieCommandsManager(artyom)
+    CommandsManager.loadCommands()
 
     artyom.when('NOT_COMMAND_MATCHED', function(error) {
-      props.handleFetchAssistantData(artyom, props);
-    });
+      props.handleFetchAssistantData(artyom, props)
+    })
 
     artyom.when('ERROR', function(error) {
       if (error.code == 'no-speech' && artyom.ArtyomProperties.triggered == true) {
-        props.handleStopListening(artyom, props);
+        props.handleStopListening(artyom, props)
       }
-    });
+    })
   }
 
   componentDidMount() {
     if (this.props.isLoggedIn && this.props.isToggled) {
-      this.props.handleStartAssistant(artyom, this.props);
+      this.props.handleStartAssistant(artyom, this.props)
     }
   }
 
   componentWillUnmount() {
-    this.props.handleStopAssistant(artyom, this.props);
+    this.props.handleStopAssistant(artyom, this.props)
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.isLoggedIn !== nextProps.isLoggedIn) {
-      return true;
+      return true
     } else if (this.props.history.location.pathname !== nextProps.history) {
-      return true;
+      return true
     } else if (this.props.isToggled !== nextProps.isToggled) {
-      return true;
+      return true
     } else if (this.props.isListening !== nextProps.isListening) {
-      return true;
+      return true
     } else if (this.props.isThinking !== nextProps.isThinking) {
-      return true;
+      return true
     } else if (this.props.isReplying !== nextProps.isReplying) {
-      return true;
+      return true
     } else if (nextProps.assistantError !== null) {
-      return false;
+      return false
     } else {
-      return false;
+      return false
     }
   }
 
   render() {
-    const {isLoggedIn, isToggled, isListening, isThinking, isReplying, children} = this.props;
+    const { isLoggedIn, isToggled, isListening, isThinking, isReplying, children } = this.props
     return (
       <div
         style={{
@@ -84,9 +84,9 @@ class ArtyomRosie extends Component {
           <a
             disabled={isThinking || isReplying}
             onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              this.props.handleOnVoiceToggle(artyom, this.props);
+              e.preventDefault()
+              e.stopPropagation()
+              this.props.handleOnVoiceToggle(artyom, this.props)
             }}
             style={{
               zIndex: 10000,
@@ -108,7 +108,7 @@ class ArtyomRosie extends Component {
         )}
         {children}
       </div>
-    );
+    )
   }
 }
 
@@ -119,11 +119,11 @@ ArtyomRosie.defaultProps = {
   isReplying: false,
   newLocation: null,
   assistantError: null
-};
+}
 
 const mapStateToProps = (state) => {
-  const {isToggled, isListening, isThinking, isReplying, assistantError} = state.artyom;
-  const isLoggedIn = !!state.app.accessToken;
+  const { isToggled, isListening, isThinking, isReplying, assistantError } = state.artyom
+  const isLoggedIn = !!state.app.accessToken
   return {
     isLoggedIn,
     isToggled,
@@ -131,8 +131,8 @@ const mapStateToProps = (state) => {
     isThinking,
     isReplying,
     assistantError
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   handleStartAssistant: (artyom, props) => dispatch(startAssistant(artyom, props)),
@@ -143,6 +143,6 @@ const mapDispatchToProps = (dispatch) => ({
   handleFetchAssistantData: (artyom, props) => dispatch(fetchAssistantData(artyom, props)),
   handleFetchAssistantVoice: (artyom, props, text) => dispatch(fetchAssistantVoice(artyom, props, text)),
   handleOnVoiceToggle: (artyom, props) => dispatch(onVoiceToggle(artyom, props))
-});
+})
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ArtyomRosie));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ArtyomRosie))

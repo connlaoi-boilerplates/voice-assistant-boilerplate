@@ -4,11 +4,7 @@ import './index.less'
 
 class SectionHeader extends React.Component {
   render() {
-    return (
-      <Card className='section-content'>
-        {this.props.children}
-      </Card>
-    )
+    return <Card className="section-content">{this.props.children}</Card>
   }
 }
 
