@@ -97,8 +97,8 @@ _Default Login credentials are any email and password._
 
 * **Connlaoi Smith** - _Ongoing Development_ - [connlaoi](https://github.com/connlaoi)
 
-See also the list of [contributors](https://github.com/connlaoi/voice-assistant-boilerplate/graphs/contributors) who participated in this project.
-
 ## Acknowledgments
 
 * **Amit Maraj** - _Initial work on React Boilerplate_ - [maraja](https://github.com/maraja)
+
+See also the list of [contributors](https://github.com/connlaoi/voice-assistant-boilerplate/graphs/contributors) who participated in this project.
